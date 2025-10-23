@@ -906,99 +906,100 @@ ul {
 }
 
 /* ======================================================= */
-/* ENGINEER BUTTON (di kanan bawah, paling bawah)          */
+/* FLOATING BUTTONS (WhatsApp & Engineer) - LEFT SIDE      */
 /* ======================================================= */
-.engineer-float {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background-color: #34495e;
-    color: #fff;
-    border-radius: 50px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-    z-index: 1001;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    width: 60px;
-    height: 60px;
-    padding: 0;
+:root {
+  --whatsapp-green: #25d366;
+  --whatsapp-dark-green: #1ebe57;
 }
 
-/* ======================================================= */
-/* WHATSAPP BUTTON (di atas engineer, kanan bawah)          */
-/* ======================================================= */
+/* --- Base style untuk semua tombol floating --- */
+.floating-btn {
+  position: fixed;
+  left: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  z-index: 1001;
+}
+
+.floating-btn i {
+  font-size: 28px;
+  transition: transform 0.3s ease;
+}
+
+.floating-btn span {
+  opacity: 0;
+  margin-left: 10px;
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* --- WhatsApp --- */
 .whatsapp-float {
-    position: fixed;
-    bottom: 110px; /* 30 + 60 + 20 jarak aman */
-    right: 30px;
-    background-color: var(--whatsapp-green);
-    color: #fff;
-    border-radius: 50px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-    z-index: 1002;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    width: 60px;
-    height: 60px;
-    padding: 0;
-}
-
-/* Hover effect umum untuk keduanya */
-.whatsapp-float:hover,
-.engineer-float:hover {
-    width: 150px;
-    height: 100px;
-    border-radius: 10px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
+  bottom: 120px; /* biar agak di atas engineer */
+  background-color: var(--whatsapp-green);
 }
 
 .whatsapp-float:hover {
-    background-color: var(--whatsapp-dark-green);
+  width: 170px;
+  border-radius: 50px;
+  background-color: var(--whatsapp-dark-green);
+}
+
+.whatsapp-float:hover span {
+  opacity: 1;
+}
+
+/* --- Engineer --- */
+.engineer-float {
+  bottom: 40px;
+  background-color: #34495e;
 }
 
 .engineer-float:hover {
-    background-color: #2c3e50;
+  width: 170px;
+  border-radius: 50px;
+  background-color: #2c3e50;
 }
 
-/* Icon & caption styling */
-.whatsapp-float i,
-.engineer-float i {
-    font-size: 40px;
-    transition: all 0.3s ease;
+.engineer-float:hover span {
+  opacity: 1;
 }
 
-.whatsapp-float:hover i,
-.engineer-float:hover i {
-    font-size: 45px;
-    margin-top: 5px;
-}
+/* --- Responsive adjustment (mobile) --- */
+@media (max-width: 768px) {
+  .floating-btn {
+    left: 15px;
+    width: 55px;
+    height: 55px;
+  }
 
-.whatsapp-caption,
-.engineer-caption {
-    font-size: 14px;
-    font-weight: 600;
-    color: #fff;
-    opacity: 0;
-    visibility: hidden;
-    height: 0;
-    transition: all 0.3s ease;
-    text-align: center;
-    white-space: nowrap;
-}
+  .whatsapp-float {
+    bottom: 110px;
+  }
 
-.whatsapp-float:hover .whatsapp-caption,
-.engineer-float:hover .engineer-caption {
-    opacity: 1;
-    visibility: visible;
-    height: auto;
+  .engineer-float {
+    bottom: 35px;
+  }
+
+  .floating-btn:hover {
+    width: 150px;
+  }
+
+  .floating-btn span {
+    font-size: 13px;
+  }
 }
 
 
