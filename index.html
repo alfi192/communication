@@ -4,10 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>JVC Kenwood Indonesia - Home</title>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Critical CSS inline (contoh minimal) -->
+    <style>
+        body { margin:0; font-family:'Poppins', sans-serif; }
+        .main-header { display:flex; align-items:center; justify-content:space-between; }
+        /* Tambahkan minimal CSS lain untuk above-the-fold */
+    </style>
+
+    <!-- Preload main stylesheet -->
+    <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/style.css"></noscript>
+
+    <!-- Preload Font Awesome -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"></noscript>
+
+    <!-- Google Fonts async -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Poppins:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
 </head>
+
 <body>
     <header class="main-header">
         <div class="header-inner container">
@@ -76,37 +92,44 @@
     </header>
 
     <main class="main-content">
-        <section class="hero-slider">
-            <div class="slider-container">
-                <div class="slide">
-                    <img src="images/hero-bg.jpg" alt="Gambar Perusahaan JVCKENWOOD">
-                    <div class="hero-caption">
-                        <p>Creating excitement and peace of mind<br>for the people of the world</p>
-                    </div>
-                </div>
-                <div class="slide">
-                    <img src="images/mining.jpg" alt="Aplikasi JVCKENWOOD di industri pertambangan">
-                    <div class="hero-caption">
-                        <p>Reliable Communication Solutions for the Mining Industry</p>
-                    </div>
-                </div>
-                <div class="slide">
-                    <img src="images/oil.jpg" alt="Gambar kedua dari aplikasi industri">
-                    <div class="hero-caption">
-                        <p>Technological Innovation for Safety and Efficiency</p>
-                    </div>
-                </div>
-            </div>
+		<!-- Preload hero image di <head> -->
+		<link rel="preload" as="image" href="images/hero-bg.webp">
 
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-            <div class="dot-container">
-                <span class="dot" onclick="currentSlide(1)"></span>
-                <span class="dot" onclick="currentSlide(2)"></span>
-                <span class="dot" onclick="currentSlide(3)"></span>
-            </div>
-        </section>
+		<section class="hero-slider">
+			<div class="slider-container">
+				<div class="slide">
+					<!-- Hero image LCP -->
+					<img src="images/hero-bg.webp" 
+						 srcset="images/hero-bg-600.webp 600w, images/hero-bg-1200.webp 1200w"
+						 sizes="(max-width: 600px) 600px, 1200px"
+						 alt="Gambar Perusahaan JVCKENWOOD">
+					<div class="hero-caption">
+						<p>Creating excitement and peace of mind<br>for the people of the world</p>
+					</div>
+				</div>
+				<div class="slide">
+					<!-- Gambar lain lazy load -->
+					<img src="images/mining.webp" 
+						 srcset="images/mining-600.webp 600w, images/mining-1200.webp 1200w"
+						 sizes="(max-width: 600px) 600px, 1200px"
+						 alt="Aplikasi JVCKENWOOD di industri pertambangan"
+						 loading="lazy">
+					<div class="hero-caption">
+						<p>Reliable Communication Solutions for the Mining Industry</p>
+					</div>
+				</div>
+				<div class="slide">
+					<img src="images/oil.webp" 
+						 srcset="images/oil-600.webp 600w, images/oil-1200.webp 1200w"
+						 sizes="(max-width: 600px) 600px, 1200px"
+						 alt="Gambar kedua dari aplikasi industri"
+						 loading="lazy">
+					<div class="hero-caption">
+						<p>Technological Innovation for Safety and Efficiency</p>
+					</div>
+				</div>
+			</div>
+		</section>
 
         <div id="search-results" class="container category-products">
             </div>
@@ -157,7 +180,7 @@
                 <div class="person-grid">
                     <div class="person-card">
                         <div class="person-image-wrapper">
-                            <img src="images/kamata.jpeg" alt="Hiroaki Kamata" class="person-image">
+                            <img src="images/kamata.webp" alt="Hiroaki Kamata" class="person-image" loading="lazy">
                         </div>
                         <div class="person-info">
                             <h3 class="person-name">Hiroaki Kamata</h3>
@@ -167,7 +190,7 @@
                     
                     <div class="person-card">
                         <div class="person-image-wrapper">
-                            <img src="images/murase.jpeg" alt="Noriyuki Murase" class="person-image">
+                            <img src="images/murase.webp" alt="Noriyuki Murase" class="person-image" loading="lazy">
                         </div>
                         <div class="person-info">
                             <h3 class="person-name">Noriyuki Murase</h3>
@@ -185,7 +208,7 @@
                 <div class="person-grid">
                     <div class="person-card">
                         <div class="person-image-wrapper">
-                            <img src="images/olivia.jpeg" alt="Olivia Soumokil" class="person-image">
+                            <img src="images/olivia.webp" alt="Olivia Soumokil" class="person-image" loading="lazy">
                         </div>
                         <div class="person-info">
                             <h3 class="person-name">Olivia Soumokil</h3>
@@ -195,7 +218,7 @@
                     
                     <div class="person-card">
                         <div class="person-image-wrapper placeholder">
-                            <img src="images/alfi.jpg" alt="Alfi Nugraha" class="person-image">
+                            <img src="images/alfi.webp" alt="Alfi Nugraha" class="person-image" loading="lazy">
                         </div>
                         <div class="person-info">
                             <h3 class="person-name">Alfi Nugraha</h3>
@@ -263,9 +286,9 @@
         <img class="modal-content" id="modalImg">
     </div>
     
-    <script src="js/fuse.min.js"></script>
-    <script src="js/script.js"></script>
-    <script src="js/search.js"></script>
+	<script src="js/fuse.min.js" defer></script>
+	<script src="js/script.js" defer></script>
+	<script src="js/search.js" defer></script>
 
 </body>
 
