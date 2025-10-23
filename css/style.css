@@ -908,6 +908,8 @@ ul {
 /* ======================================================= */
 /* FLOATING BUTTONS (WhatsApp & Engineer) - LEFT SIDE      */
 /* ======================================================= */
+
+/* --- Variabel warna --- */
 :root {
   --whatsapp-green: #25d366;
   --whatsapp-dark-green: #1ebe57;
@@ -916,7 +918,7 @@ ul {
 /* --- Base style untuk semua tombol floating --- */
 .floating-btn {
   position: fixed;
-  left: 30px;
+  left: 30px; /* tampil di kiri bawah */
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -932,7 +934,7 @@ ul {
 }
 
 .floating-btn i {
-  font-size: 28px;
+  font-size: 26px;
   transition: transform 0.3s ease;
 }
 
@@ -945,14 +947,16 @@ ul {
   font-size: 14px;
 }
 
-/* --- WhatsApp --- */
+/* ======================================================= */
+/* WHATSAPP FLOATING BUTTON                                */
+/* ======================================================= */
 .whatsapp-float {
-  bottom: 120px; /* biar agak di atas engineer */
+  bottom: 120px;
   background-color: var(--whatsapp-green);
 }
 
 .whatsapp-float:hover {
-  width: 170px;
+  width: 190px; /* melebar ke kanan */
   border-radius: 50px;
   background-color: var(--whatsapp-dark-green);
 }
@@ -961,14 +965,16 @@ ul {
   opacity: 1;
 }
 
-/* --- Engineer --- */
+/* ======================================================= */
+/* ENGINEER FLOATING BUTTON                                */
+/* ======================================================= */
 .engineer-float {
   bottom: 40px;
   background-color: #34495e;
 }
 
 .engineer-float:hover {
-  width: 170px;
+  width: 190px;
   border-radius: 50px;
   background-color: #2c3e50;
 }
@@ -977,7 +983,9 @@ ul {
   opacity: 1;
 }
 
-/* --- Responsive adjustment (mobile) --- */
+/* ======================================================= */
+/* RESPONSIVE ADJUSTMENTS (TABLET & MOBILE)                */
+/* ======================================================= */
 @media (max-width: 768px) {
   .floating-btn {
     left: 15px;
@@ -994,7 +1002,7 @@ ul {
   }
 
   .floating-btn:hover {
-    width: 150px;
+    width: 160px;
   }
 
   .floating-btn span {
@@ -1002,6 +1010,50 @@ ul {
   }
 }
 
+@media (max-width: 500px) {
+  .floating-btn {
+    left: 10px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .floating-btn i {
+    font-size: 22px;
+  }
+
+  .floating-btn:hover {
+    width: 140px;
+  }
+
+  .floating-btn span {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 380px) {
+  .floating-btn {
+    left: 8px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .floating-btn:hover {
+    width: 130px;
+  }
+
+  .floating-btn span {
+    font-size: 11px;
+  }
+}
+
+/* ======================================================= */
+/* OPTIONAL: SMOOTH SCALE EFFECT ON MOBILE TOUCH           */
+/* ======================================================= */
+@media (hover: none) {
+  .floating-btn:active {
+    transform: scale(1.05);
+  }
+}
 
 /* ======================================================= */
 /* MEDIA QUERIES FOR ENGINEER BUTTON                      */
