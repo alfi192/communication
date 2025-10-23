@@ -906,12 +906,12 @@ ul {
 }
 
 /* ======================================================= */
-/* ENGINEER BUTTON STYLES (tetap bawah kiri)                */
+/* ENGINEER BUTTON (di kanan bawah, paling bawah)          */
 /* ======================================================= */
 .engineer-float {
     position: fixed;
     bottom: 30px;
-    left: 30px;
+    right: 30px;
     background-color: #34495e;
     color: #fff;
     border-radius: 50px;
@@ -929,17 +929,17 @@ ul {
 }
 
 /* ======================================================= */
-/* WHATSAPP BUTTON STYLES (di atas engineer)                */
+/* WHATSAPP BUTTON (di atas engineer, kanan bawah)          */
 /* ======================================================= */
 .whatsapp-float {
     position: fixed;
-    bottom: 110px; /* dinaikkan dari engineer (30px + tinggi 60px + 20px jarak) */
-    left: 30px;
+    bottom: 110px; /* 30 + 60 + 20 jarak aman */
+    right: 30px;
     background-color: var(--whatsapp-green);
     color: #fff;
     border-radius: 50px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-    z-index: 1002; /* lebih tinggi sedikit dari engineer */
+    z-index: 1002;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -951,22 +951,38 @@ ul {
     padding: 0;
 }
 
-/* Hover states tetap sama seperti sebelumnya */
-.whatsapp-float:hover {
+/* Hover effect umum untuk keduanya */
+.whatsapp-float:hover,
+.engineer-float:hover {
     width: 150px;
     height: 100px;
-    background-color: var(--whatsapp-dark-green);
     border-radius: 10px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
 }
 
-/* Caption tetap smooth */
-.whatsapp-float i {
+.whatsapp-float:hover {
+    background-color: var(--whatsapp-dark-green);
+}
+
+.engineer-float:hover {
+    background-color: #2c3e50;
+}
+
+/* Icon & caption styling */
+.whatsapp-float i,
+.engineer-float i {
     font-size: 40px;
     transition: all 0.3s ease;
 }
 
-.whatsapp-float .whatsapp-caption {
+.whatsapp-float:hover i,
+.engineer-float:hover i {
+    font-size: 45px;
+    margin-top: 5px;
+}
+
+.whatsapp-caption,
+.engineer-caption {
     font-size: 14px;
     font-weight: 600;
     color: #fff;
@@ -978,12 +994,8 @@ ul {
     white-space: nowrap;
 }
 
-.whatsapp-float:hover i {
-    font-size: 45px;
-    margin-top: 5px;
-}
-
-.whatsapp-float:hover .whatsapp-caption {
+.whatsapp-float:hover .whatsapp-caption,
+.engineer-float:hover .engineer-caption {
     opacity: 1;
     visibility: visible;
     height: auto;
